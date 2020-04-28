@@ -39,7 +39,7 @@ export default {
   methods:{
     submitForm(form){
       
-      this.$refs['loginform'].validate( async vaild=>{
+      this.$refs[form].validate( async vaild=>{
             if(vaild){
               console.log("验证成功")
             }else{
