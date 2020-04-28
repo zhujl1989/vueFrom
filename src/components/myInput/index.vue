@@ -19,8 +19,9 @@ export default {
   },
   methods:{
       editInput(e){
+          console.log(4)
           this.$emit('input',e.target.value);
-          this.$parent.$emit('validate')
+          this.$parent.$emit("validate");
       }
   }
 }

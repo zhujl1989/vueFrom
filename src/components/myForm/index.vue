@@ -9,6 +9,11 @@
 <script>
 export default {
    name:'myform',
+   provide(){
+       return{
+          form:this,
+       }
+   },
    props:{
       width:{
         type:String,
@@ -16,7 +21,10 @@ export default {
       },
       model:{
          type:Object,
-         default:{}
+        
+      },
+      rules:{
+         type:Object
       }
    },
    mounted(){      

@@ -10,21 +10,38 @@
 </template>
 
 <script>
-import validate from 'async-validator'
+import Validator from 'async-validator'
 export default {
-   props:{
-       lable:{
-           type:String,
-           default:''
-       }
-   },
+   inject:['form'],
+   props:['lable','prop'],
    data(){
        return{
            errorMessage:''
        }
    },
+   created(){
+      this.$on('validate',this.validate)
+   },
    methods:{
-
+      validate(){ 
+          return new Promise(resolve=>{
+                const rules = this.form.rules[this.prop];
+                const value = this.form.model[this.prop];
+                let  descriptRule = { [this.prop] : rules }
+                let  validator = new Validator(descriptRule)
+                validator.validate({ [this.prop] : value },errors=>{
+                    if(errors){
+                        //错误                 
+                        this.errorMessage = errors[0].message;
+                        resolve(false)
+                    }else{
+                        this.errorMessage = " ";
+                        resolve(true)
+                    }
+                })
+          })  
+          
+      }
    }
 }
 </script>
