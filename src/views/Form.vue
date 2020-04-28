@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <my-form :model="userInfo" :rules="rules" width="500px" ref="loginForm">
+    <my-form :model="userInfo" :rules="rules" width="500px" ref="loginform">
         <my-form-item lable="登录" prop="username">
-            <my-input v-model="userInfo.userName" ></my-input>
+            <my-input v-model="userInfo.username" ></my-input>
         </my-form-item>
         <my-form-item lable="注册" prop="password">
             <my-input v-model="userInfo.password" type="password"></my-input>
@@ -40,7 +40,7 @@ export default {
     submitForm(form){
       
       this.$refs['loginform'].validate( async vaild=>{
-            if(valid){
+            if(vaild){
               console.log("验证成功")
             }else{
               console.log("验证失败")

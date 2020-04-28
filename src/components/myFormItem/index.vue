@@ -2,10 +2,9 @@
    <div>
        <div class="my_form_item">
            <label v-if="lable">{{lable}}</label>
-           <slot></slot>
-           <p class="error_mes" v-if="errorMessage">{{errorMessage}}</p>
+           <slot></slot>           
        </div>
-
+       <p class="error_mes" v-if="errorMessage">{{errorMessage}}</p>
    </div>
 </template>
 
@@ -58,8 +57,11 @@ export default {
             line-height: 40px;
             display: inline-block;
         }
-        .error_mes{
+        
+    }
+    .error_mes{
             color: red;
-        }
+            text-align: left;
+            margin-left: 56px;
     }
 </style>

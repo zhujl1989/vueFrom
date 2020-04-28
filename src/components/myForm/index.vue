@@ -29,6 +29,19 @@ export default {
    },
    mounted(){      
         document.querySelector(".my_form_box").style.width = this.width;
+   },
+   methods:{
+       async validate(cb){
+           const tasks = this.$children.filter(item=>item.prop).map(item=>item.validate())
+           console.log(tasks)
+          const result = await Promise.all(tasks);
+           console.log(result)
+           if(result.some(vaild=>!vaild)){
+              cb(false)
+           }else{
+              cb(true)
+           }
+        }
    }
 }
 </script>
