@@ -8,7 +8,9 @@
             <my-input v-model="userInfo.password" type="password"></my-input>
         </my-form-item>
         <my-form-item>
-            <button @click="submitForm('loginForm')">提交</button>
+            <div class="footer">
+               <button @click="submitForm('loginform')" class="btn">提交</button>
+            </div>
         </my-form-item>
     </my-form>
   </div>
@@ -38,7 +40,6 @@ export default {
   },
   methods:{
     submitForm(form){
-      
       this.$refs[form].validate( async vaild=>{
             if(vaild){
               console.log("验证成功")
@@ -50,3 +51,17 @@ export default {
   }
 }
 </script>
+<style>
+  .footer{
+    flex: 1;
+    text-align: center;
+  }
+  .btn{
+      color: #fff;
+      background-color: #1989fa;
+      border: 1px solid #1989fa;
+      line-height: 40px;
+      padding: 0 30px;
+      border-radius: 3px;
+  }    
+</style>
